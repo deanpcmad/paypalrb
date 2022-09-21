@@ -14,7 +14,9 @@ module PayPal
   autoload :AccessToken, "pay_pal/access_token"
 
   autoload :ProductsResource, "pay_pal/resources/products"
+  autoload :OrdersResource, "pay_pal/resources/orders"
 
   autoload :Product, "pay_pal/objects/product"
+  autoload :Order, "pay_pal/objects/order"
 
 end

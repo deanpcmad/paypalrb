@@ -15,6 +15,10 @@ module PayPal
       ProductsResource.new(self)
     end
 
+    def orders
+      OrdersResource.new(self)
+    end
+
     def connection
       url = @sandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com"
 
