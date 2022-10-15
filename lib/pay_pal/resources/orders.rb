@@ -19,5 +19,15 @@ module PayPal
       ).body
     end
 
+    def authorize(id:)
+      response = post_request("v2/checkout/orders/#{id}/authorize", body: {})
+      Order.new(response.body)
+    end
+
+    def capture(id:)
+      response = post_request("v2/checkout/orders/#{id}/capture", body: {})
+      Order.new(response.body)
+    end
+
   end
 end
