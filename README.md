@@ -14,10 +14,19 @@ gem 'paypalrb'
 
 ## Usage
 
-### Set Client Details
+### Generate an Access Token
 
-Firstly you'll need to set an Access Token. 
+Firstly you'll need to generate an Access Token. Set the Client ID and Secret
 An Access Token will be an OAuth2 token generated after authentication. 
+
+
+```ruby
+@authentication = PayPal::Authentication.new(client_id: "", client_secret: "")
+
+@authentication.get_token
+# =>  #<PayPal::AccessToken access_token="abc123", expires_in=123 
+```
+
 
 ## Contributing
 

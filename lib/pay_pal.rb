@@ -11,11 +11,12 @@ module PayPal
   autoload :Resource, "pay_pal/resource"
   autoload :Object, "pay_pal/object"
   
-  autoload :AccessToken, "pay_pal/access_token"
+  autoload :Authentication, "pay_pal/authentication"
 
   autoload :ProductsResource, "pay_pal/resources/products"
   autoload :OrdersResource, "pay_pal/resources/orders"
 
+  autoload :AccessToken, "pay_pal/objects/access_token"
   autoload :Product, "pay_pal/objects/product"
   autoload :Order, "pay_pal/objects/order"
 

@@ -1,5 +1,5 @@
 module PayPal
-  class AccessToken
+  class Authentication
 
     attr_reader :client_id, :client_secret, :sandbox
 
@@ -23,7 +23,8 @@ module PayPal
 
       response = request_helper.post "/v1/oauth2/token?grant_type=client_credentials"
 
-      JSON.parse(response.body)
+      body = JSON.parse(response.body)
+      AccessToken.new(body)
     end
 
   end

@@ -14,7 +14,7 @@ require 'dotenv/load'
 # require "pry"
 # Pry.start
 
-@access_token = PayPal::AccessToken.new(client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
+@authentication = PayPal::Authentication.new(client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
 
 @client = PayPal::Client.new(access_token: ENV["ACCESS_TOKEN"])
 
