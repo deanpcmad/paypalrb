@@ -11,6 +11,10 @@ module PayPal
       @stubs = stubs
     end
 
+    def identity
+      IdentityResource.new(self)
+    end
+
     def products
       ProductsResource.new(self)
     end
