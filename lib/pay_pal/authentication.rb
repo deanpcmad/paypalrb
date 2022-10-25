@@ -3,7 +3,7 @@ module PayPal
 
     attr_reader :client_id, :client_secret, :sandbox
 
-    def initialize(client_id:, client_secret:, sandbox: true, adapter: Faraday.default_adapter)
+    def initialize(client_id:, client_secret:, sandbox:, adapter: Faraday.default_adapter)
       @client_id = client_id
       @client_secret = client_secret
       @sandbox = sandbox

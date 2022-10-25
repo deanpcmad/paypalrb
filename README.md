@@ -21,7 +21,11 @@ An Access Token will be an OAuth2 token generated after authentication.
 
 
 ```ruby
-@authentication = PayPal::Authentication.new(client_id: "", client_secret: "")
+@authentication = PayPal::Authentication.new(
+  client_id: "",
+  client_secret: "",
+  sandbox: true
+)
 
 @authentication.get_token
 # =>  #<PayPal::AccessToken access_token="abc123", expires_in=123 
@@ -30,7 +34,7 @@ An Access Token will be an OAuth2 token generated after authentication.
 Then once you have an access token, set it like so:
 
 ```ruby
-@client = PayPal::Client.new(access_token: "abc123")
+@client = PayPal::Client.new(access_token: "abc123", sandbox: true)
 ```
 
 ### Products

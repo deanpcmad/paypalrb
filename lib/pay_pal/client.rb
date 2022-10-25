@@ -2,7 +2,7 @@ module PayPal
   class Client
     attr_reader :access_token, :sandbox, :adapter
 
-    def initialize(access_token:, sandbox: true, adapter: Faraday.default_adapter, stubs: nil)
+    def initialize(access_token:, sandbox:, adapter: Faraday.default_adapter, stubs: nil)
       @access_token = access_token
       @sandbox = sandbox
       @adapter = adapter
