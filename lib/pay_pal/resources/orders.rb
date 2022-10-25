@@ -61,5 +61,11 @@ module PayPal
       Order.new(response.body)
     end
 
+    def confirm(id:, source:)
+      attributes = {payment_source: source}
+      response = post_request("v2/checkout/orders/#{id}/confirm-payment-source", body: attributes.merge(params))
+      Order.new(response.body)
+    end
+
   end
 end

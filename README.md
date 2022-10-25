@@ -77,6 +77,9 @@ Then once you have an access token, set it like so:
 
 # Captures payment for an order. The buyer must first approve the order.
 @client.orders.capture id: "123abc"
+
+# Confirms a payment source for an order
+@client.orders.confirm id: "123abc", source: {}
 ```
 
 ## Contributing
