@@ -17,6 +17,7 @@ require 'dotenv/load'
 @authentication = PayPal::Authentication.new(sandbox: true, client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
 
 @client = PayPal::Client.new(sandbox: true, access_token: ENV["ACCESS_TOKEN"])
+@client_partner = PayPal::Client.new(sandbox: true, partner_id: ENV["PARTNER_ID"], access_token: ENV["ACCESS_TOKEN"])
 
 require "irb"
 IRB.start(__FILE__)
