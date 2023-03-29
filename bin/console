@@ -14,10 +14,8 @@ require 'dotenv/load'
 # require "pry"
 # Pry.start
 
-@authentication = PayPal::Authentication.new(sandbox: true, client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
-
-@client = PayPal::Client.new(sandbox: true, access_token: ENV["ACCESS_TOKEN"])
-@client_partner = PayPal::Client.new(sandbox: true, partner_id: ENV["PARTNER_ID"], access_token: ENV["ACCESS_TOKEN"])
+@client = PayPal::Client.new(client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"], sandbox: true)
+@client_partner = PayPal::Client.new(client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"], partner_id: ENV["PARTNER_ID"], sandbox: true)
 
 require "irb"
 IRB.start(__FILE__)

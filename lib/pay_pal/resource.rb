@@ -9,23 +9,39 @@ module PayPal
     private
 
     def get_request(url, params: {}, headers: {})
-      handle_response client.connection.get(url, params, headers)
+      handle_response client.connection.get(url, params, merged_headers(headers))
     end
 
     def post_request(url, body:, headers: {})
-      handle_response client.connection.post(url, body, headers)
+      handle_response client.connection.post(url, body, merged_headers(headers))
     end
 
     def patch_request(url, body:, headers: {})
-      handle_response client.connection.patch(url, body, headers)
+      handle_response client.connection.patch(url, body, merged_headers(headers))
     end
 
     def put_request(url, body:, headers: {})
-      handle_response client.connection.put(url, body, headers)
+      handle_response client.connection.put(url, body, merged_headers(headers))
     end
 
     def delete_request(url, params: {}, headers: {})
-      handle_response client.connection.delete(url, params, headers)
+      handle_response client.connection.delete(url, params, merged_headers(headers))
+    end
+
+    def merged_headers(headers)
+      headers.merge(auth_header).merge(default_headers)
+    end
+
+    def auth_header
+      { authorization: "Bearer #{client.auth_token}" }
+    end
+
+    def default_headers
+      {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "paypalrb/v#{VERSION} (github.com/deanpcmad/paypalrb)"
+      }
     end
 
     def handle_response(response)
