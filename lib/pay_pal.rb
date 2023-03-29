@@ -16,10 +16,12 @@ module PayPal
   autoload :ProductsResource, "pay_pal/resources/products"
   autoload :OrdersResource, "pay_pal/resources/orders"
   autoload :IdentityResource, "pay_pal/resources/identity"
+  autoload :PartnerReferralsResource, "pay_pal/resources/partner_referrals"
 
   autoload :AccessToken, "pay_pal/objects/access_token"
   autoload :Product, "pay_pal/objects/product"
   autoload :Order, "pay_pal/objects/order"
   autoload :Identity, "pay_pal/objects/identity"
+  autoload :PartnerReferral, "pay_pal/objects/partner_referral"
 
 end

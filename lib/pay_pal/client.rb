@@ -35,6 +35,10 @@ module PayPal
       OrdersResource.new(self)
     end
 
+    def partner_referrals
+      PartnerReferralsResource.new(self)
+    end
+
 
     def auth_token(force: false)
       return @cache.read(TOKEN_CACHE_KEY) if @cache.exist?(TOKEN_CACHE_KEY) && force == false
