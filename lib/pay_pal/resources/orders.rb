@@ -2,7 +2,7 @@ module PayPal
   class OrdersResource < Resource
 
     def retrieve(id:)
-      response = get_request("v2/checkout/orders/#{id}")
+      response = get_request("v2/checkout/orders/#{id}", headers: default_headers)
       Order.new(response.body)
     end
     
@@ -10,7 +10,7 @@ module PayPal
       attributes = {intent: intent.upcase, purchase_units: units}
       Order.new post_request("v2/checkout/orders", 
         body: attributes.merge(params),
-        headers: {"Prefer" => "return=representation"}
+        headers: default_headers
       ).body
     end
 
@@ -25,7 +25,7 @@ module PayPal
       attributes = {intent: intent.upcase, purchase_units: items}
       Order.new post_request("v2/checkout/orders", 
         body: attributes.merge(params),
-        headers: {"Prefer" => "return=representation"}
+        headers: default_headers
       ).body
     end
 
@@ -47,24 +47,33 @@ module PayPal
       attributes = {intent: intent.upcase, purchase_units: items}
       Order.new post_request("v2/checkout/orders", 
         body: attributes.merge(params),
-        headers: {"Prefer" => "return=representation"}
+        headers: default_headers
       ).body
     end
 
     def authorize(id:)
-      response = post_request("v2/checkout/orders/#{id}/authorize", body: {})
+      response = post_request("v2/checkout/orders/#{id}/authorize", body: {}, headers: default_headers)
       Order.new(response.body)
     end
 
     def capture(id:)
-      response = post_request("v2/checkout/orders/#{id}/capture", body: {})
+      response = post_request("v2/checkout/orders/#{id}/capture", body: {}, headers: default_headers)
       Order.new(response.body)
     end
 
     def confirm(id:, source:)
       attributes = {payment_source: source}
-      response = post_request("v2/checkout/orders/#{id}/confirm-payment-source", body: attributes.merge(params))
+      response = post_request("v2/checkout/orders/#{id}/confirm-payment-source", body: attributes.merge(params), headers: default_headers)
       Order.new(response.body)
+    end
+
+    private
+
+    def default_headers
+      {
+        "Prefer" => "return=representation",
+        "PayPal-Partner-Attribution-Id" => @partner_id
+      }
     end
 
   end
